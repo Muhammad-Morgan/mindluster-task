@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Provider } from "./provider";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "@/components/organisms/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kanban-style ToDo list application",
+  title: "Kanban-style ToDo list",
   description:
     " ToDo list dashboard with 4 columns (e.g., Backlog, In Progress, Review, Done).",
 };
@@ -27,8 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Provider>{children}</Provider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        suppressHydrationWarning
+      >
+        <Provider>
+          <Navbar />
+          <main>{children}</main>
+        </Provider>
       </body>
     </html>
   );
