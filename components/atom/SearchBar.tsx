@@ -1,0 +1,56 @@
+import { Search } from "lucide-react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
+import { useState, useEffect, startTransition } from "react";
+
+const SearchBar = () => {
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+  const [search, setSearch] = useState<string>(
+    searchParams.get("search")?.toString() || "",
+  );
+
+  const handleSearch = useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (value) {
+      params.set("search", value);
+    } else {
+      params.delete("search");
+    }
+    replace(`/tasks?${params.toString()}`);
+  }, 300);
+  const currentSearchValue = searchParams.get("search");
+
+  useEffect(() => {
+    if (!currentSearchValue) {
+      startTransition(() => setSearch(""));
+    }
+  }, [currentSearchValue]);
+
+  return (
+    <div className="position-relative w-100" style={{ maxWidth: "220px" }}>
+      <label className="visually-hidden" htmlFor="q">
+        Search
+      </label>
+      <Search
+        className="position-absolute top-50 start-0 translate-middle-y ms-3 text-body-tertiary"
+        size={14}
+        aria-hidden="true"
+      />
+      <input
+        id="q"
+        className="form-control form-control-sm ps-5 rounded-3"
+        type="search"
+        name="q"
+        placeholder={"search tasks..."}
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          handleSearch(e.target.value);
+        }}
+      />
+    </div>
+  );
+};
+
+export default SearchBar;
