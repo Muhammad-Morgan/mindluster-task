@@ -11,7 +11,9 @@ export default async function TasksPage() {
   await queryClient.prefetchQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const resp = await fetch("http://localhost:3000/api/tasks/gettasks");
+      const resp = await fetch(
+        "https://mindluster-task-olive.vercel.app/api/tasks/gettasks",
+      );
       return resp.json();
     },
   });

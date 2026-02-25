@@ -70,7 +70,7 @@ Each task typically contains:
 2. Run the dev server:
    - `npm run dev`
 3. Open:
-   - `http://localhost:3000`
+   - `https://mindluster-task-olive.vercel.app`
 
 ## Scripts
 
