@@ -1,23 +1,80 @@
-# Next.js Kanban To-Do:
+# Next.js Kanban To-Do
 
-Description:
+## Overview
+This project is a Kanban-style task board built with the Next.js App Router. It
+supports creating, editing, deleting, and listing tasks, and presents them in
+four workflow columns: Backlog, In Progress, Review, and Done. The UI uses
+Bootstrap utility classes, and tasks are persisted in a local JSON file to
+simulate a lightweight database.
 
-## Tech used:
+## Features
+- CRUD tasks (create, edit, delete, list)
+- Four workflow columns with status-based grouping
+- Column drag-and-drop reordering
+- Infinite scroll per column to progressively reveal tasks
+- Form validation with React Hook Form + Zod
+- Optimistic, cached data fetching with TanStack Query
 
--
+## Tech Used
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Bootstrap 5
+- TanStack Query
+- DnD Kit (column reordering)
+- React Hook Form + Zod
+- Lucide Icons
+- UUID
 
-## Project structure:
+## Project Structure
+This codebase follows an Atomic Design-inspired structure:
+- `components/atom` for tiny UI controls (Search, Delete button)
+- `components/molecules` for small composites (TaskCard, Breadcrumb)
+- `components/organisms` for larger UI blocks (Navbar, TasksList, Create/Edit forms)
+- `components/page` for page-level compositions (Dashboard)
+- `app` for routes, pages, and API handlers
+- `lib/mockData.json` as the mock database
 
-### Atomic Design
+## Data Model
+Each task typically contains:
+- `id` (UUID)
+- `title`
+- `description`
+- `status` (Backlog, In Progress, Review, Done)
+- `createdAt` and `updatedAt` timestamps
 
--
+## Action Flow
+- The UI reads tasks using TanStack Query from `/api/tasks/gettasks`.
+- Create/Edit/Delete actions use HTTP requests to API route handlers.
+- The edit page loads a single task via a server action.
+- Columns are reorderable via drag-and-drop.
+- Each column supports infinite scroll to reveal more tasks.
 
-## Action flow:
+## API Approach
+- Uses Next Route Handlers.
+- Uses the Node `fs` module to read/write a mock JSON database.
+- `lib/mockData.json` provides initial testing data.
 
--
+## Setup
+1. Install dependencies:
+   - `npm install`
+2. Run the dev server:
+   - `npm run dev`
+3. Open:
+   - `http://localhost:3000`
 
-## API option used:
+## Scripts
+- `npm run dev` for local development
+- `npm run build` for production build
+- `npm run start` to run the production server
+- `npm run lint` for linting
 
-- Next Route Handlers.
-- fs module to read and write mocking DB queries. BTW, I do write Express apps. So, that's one thing I will use from such experience for that task.
-- mockData.json with testing data.
+## Notes and Limitations
+- JSON persistence is meant for local development only.
+- Concurrent writes are not optimized, as this is a mock database.
+- In production, replace JSON with a real database and API layer.
+
+## Future Improvements
+- Add user authentication and per-user boards
+- Add task labels, priorities, and due dates
+- Add search, filter, and sort across columns
+- Replace JSON storage with a database (PostgreSQL, Prisma, etc.)
