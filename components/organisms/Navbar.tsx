@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { LayoutGrid } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { Suspense } from "react";
 import SearchBar from "../atom/SearchBar";
 
 const Navbar = () => {
@@ -46,7 +47,16 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <SearchBar />
+          <Suspense
+            fallback={
+              <div
+                className="w-100"
+                style={{ maxWidth: "220px", height: "31px" }}
+              />
+            }
+          >
+            <SearchBar />
+          </Suspense>
         </div>
       </div>
     </nav>
