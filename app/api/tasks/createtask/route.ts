@@ -6,20 +6,11 @@ import { v4 as uuidv4 } from "uuid";
 
 type StoredTask = Task & { id: string; createdAt: string };
 
-const normalizeColumn = (value: string) => {
-  if (value === "in_progress") return "in-progress";
-  return value;
-};
-
 export const POST = async (req: Request) => {
   const filePath = path.join(process.cwd(), "lib", "mockData.json");
   const body = await req.json();
-  const normalizedBody = {
-    ...body,
-    column: normalizeColumn(body?.column),
-  };
   // validating
-  const validateFields = taskSchema.safeParse(normalizedBody);
+  const validateFields = taskSchema.safeParse(body);
   if (!validateFields.success) {
     return NextResponse.json(
       {
@@ -30,23 +21,18 @@ export const POST = async (req: Request) => {
     );
   }
 
-  let existing: unknown = [];
+  let existing: StoredTask[] | [] = [];
   try {
     const raw = await fs.readFile(filePath, "utf-8");
-    existing = raw.trim() ? JSON.parse(raw) : { tasks: [] };
+    existing = raw.trim() ? JSON.parse(raw) : [];
   } catch (error) {
     console.log(error);
     throw new Error("Issue with reading file...");
   }
-  const tasks = Array.isArray(existing)
-    ? existing
-    : (existing as { tasks?: StoredTask[] })?.tasks ?? [];
-
   const next: StoredTask[] = [
-    ...tasks,
+    ...existing,
     {
       ...validateFields.data,
-      column: normalizeColumn(validateFields.data.column),
       id: uuidv4(),
       createdAt: new Date().toISOString(),
     },
