@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import type { Task } from "@/lib/zodSchemas";
 import TasksList from "@/components/organisms/TasksList";
@@ -70,6 +70,11 @@ const Dashboard = () => {
   const [columnOrder, setColumnOrder] = useState<string[]>(
     columns.map((column) => column.key),
   );
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const orderedColumns = useMemo(
     () =>
@@ -162,6 +167,64 @@ const Dashboard = () => {
     );
   };
 
+  const StaticColumnCard = ({ column }: { column: ColumnConfig }) => {
+    return (
+      <div className="col-12 col-md-6 col-xl-3">
+        <div
+          className="h-100 border border-1 rounded-3 p-3 d-flex flex-column gap-3"
+          style={{
+            borderColor: column.color,
+            backgroundColor: "var(--bs-column-bg)",
+          }}
+        >
+          <div className="d-flex align-items-center justify-content-between">
+            <span className="d-flex align-items-center gap-2 text-uppercase small fw-semibold text-body">
+              <span
+                className="rounded-circle d-inline-block"
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  backgroundColor: column.color,
+                }}
+              />
+              {column.title}
+            </span>
+            <span className="badge rounded-pill text-bg-light text-body-secondary">
+              {getColumnCount(column.key)}
+            </span>
+          </div>
+          <TasksList column={column.key} tasks={currentTasks} />
+          <Link
+            href="/tasks/create-task"
+            className="btn btn-outline-primary btn-sm w-100"
+          >
+            + Add task
+          </Link>
+        </div>
+      </div>
+    );
+  };
+
+  const columnsGrid = (
+    <div className="row g-3">
+      {orderedColumns.map((column) =>
+        isClient ? (
+          <ColumnCard key={column.key} column={column} />
+        ) : (
+          <StaticColumnCard key={column.key} column={column} />
+        ),
+      )}
+    </div>
+  );
+
+  if (!isClient) {
+    return (
+      <main className="container py-4">
+        <div className="d-flex flex-column gap-3">{columnsGrid}</div>
+      </main>
+    );
+  }
+
   return (
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <main className="container py-4">
@@ -170,11 +233,7 @@ const Dashboard = () => {
             items={columnOrder}
             strategy={horizontalListSortingStrategy}
           >
-            <div className="row g-3">
-              {orderedColumns.map((column) => (
-                <ColumnCard key={column.key} column={column} />
-              ))}
-            </div>
+            {columnsGrid}
           </SortableContext>
         </div>
       </main>

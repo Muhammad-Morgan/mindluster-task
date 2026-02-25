@@ -1,15 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { navLinks } from "@/utils/navLinks";
 
 export const Header = () => {
-  const pathname = usePathname();
-
   return (
-    <header className="py-2">
-      <div className="container">
+    <header>
+      <div className="container py-2">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb mb-0">
             <li className="breadcrumb-item">
@@ -18,22 +13,28 @@ export const Header = () => {
               </Link>
             </li>
             {navLinks.map((link) => {
-              const isActive =
-                pathname === link.href || pathname.startsWith(link.href + "/");
-
               return (
                 <li
                   key={link.href}
-                  className={`breadcrumb-item ${isActive ? "active" : ""}`}
-                  aria-current={isActive ? "page" : undefined}
+                  className="breadcrumb-item"
+                  style={{ width: "fit-content" }}
                 >
-                  {isActive ? (
-                    <span className="text-primary">{link.label}</span>
+                  <Link href={link.href} className="text-decoration-none">
+                    <span className="d-flex align-items-center gap-2 mx-2 text-nowrap">
+                      {link.label}
+                    </span>
+                  </Link>
+                  {/* {isActive ? (
+                    <span className="d-flex align-items-center gap-2 text-primary">
+                      {link.label}
+                    </span>
                   ) : (
                     <Link href={link.href} className="text-decoration-none">
-                      {link.label}
+                      <span className="d-flex align-items-center gap-2">
+                        {link.label}
+                      </span>
                     </Link>
-                  )}
+                  )} */}
                 </li>
               );
             })}

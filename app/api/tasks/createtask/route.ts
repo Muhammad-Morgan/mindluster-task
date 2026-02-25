@@ -38,11 +38,7 @@ export const POST = async (req: Request) => {
     },
   ];
   try {
-    await fs.writeFile(
-      filePath,
-      JSON.stringify({ tasks: next }, null, 2),
-      "utf-8",
-    );
+    await fs.writeFile(filePath, JSON.stringify(next, null, 2), "utf-8");
   } catch (error) {
     console.log(error);
     throw new Error("Issue with writing file...");

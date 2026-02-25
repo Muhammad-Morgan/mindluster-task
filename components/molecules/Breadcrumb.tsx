@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
-import { navLinks } from "../../utils/navLinks";
+import { usePathname } from "next/navigation";
+import { navLinks } from "@/utils/navLinks";
 
 export const Breadcrumb = () => {
+  const pathname = usePathname();
+
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb mb-0">
@@ -11,10 +16,21 @@ export const Breadcrumb = () => {
           </Link>
         </li>
         {navLinks.map((link) => {
+          const isActive = pathname === link.href;
           return (
-            <Link href={link.href} key={link.href}>
-              {link.label}
-            </Link>
+            <li
+              key={link.href}
+              className={`breadcrumb-item ${isActive ? "active" : ""}`}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {isActive ? (
+                link.label
+              ) : (
+                <Link href={link.href} className="text-decoration-none">
+                  {link.label}
+                </Link>
+              )}
+            </li>
           );
         })}
       </ol>
