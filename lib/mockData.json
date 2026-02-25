@@ -1,0 +1,32 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Design homepage",
+      "description": "Include hero section",
+      "column": "backlog",
+      "createdAt": "2025-01-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Setup authentication",
+      "description": "Implement login and register",
+      "column": "in_progress",
+      "createdAt": "2025-01-02T09:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Add drag and drop",
+      "description": "Integrate dnd-kit",
+      "column": "review",
+      "createdAt": "2025-01-03T14:15:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Deploy to Vercel",
+      "description": "Prepare production build",
+      "column": "done",
+      "createdAt": "2025-01-04T16:45:00.000Z"
+    }
+  ]
+}
