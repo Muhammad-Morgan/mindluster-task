@@ -3,6 +3,7 @@ import z from "zod";
 export type Column = "backlog" | "in-progress" | "review" | "done";
 
 export type Task = {
+  id: string;
   title: string;
   description: string;
   column?: Column;

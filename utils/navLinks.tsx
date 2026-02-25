@@ -1,8 +1,4 @@
-"use client";
-
-import { CheckSquare, Edit } from "lucide-react";
-
 export const navLinks = [
-  { href: "/tasks", label: "Tasks", icon: CheckSquare },
-  { href: "/tasks/edit-task", label: "Edit Task", icon: Edit },
+  { href: "/tasks", label: "Tasks" },
+  { href: "/tasks/create-task", label: "Create Task" },
 ];

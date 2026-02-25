@@ -7,19 +7,19 @@ const SearchBar = () => {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const [search, setSearch] = useState<string>(
-    searchParams.get("search")?.toString() || "",
+    searchParams.get("q")?.toString() || "",
   );
 
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
     if (value) {
-      params.set("search", value);
+      params.set("q", value);
     } else {
-      params.delete("search");
+      params.delete("q");
     }
     replace(`/tasks?${params.toString()}`);
   }, 300);
-  const currentSearchValue = searchParams.get("search");
+  const currentSearchValue = searchParams.get("q");
 
   useEffect(() => {
     if (!currentSearchValue) {
