@@ -1,30 +1,149 @@
 [
   {
     "id": 1,
-    "title": "Design homepage",
-    "description": "Include hero section",
+    "title": "Design landing page layout",
+    "description": "Create wireframe and structure for hero and feature sections",
     "column": "backlog",
-    "createdAt": "2025-01-01T10:00:00.000Z"
+    "createdAt": "2025-01-01T08:00:00.000Z"
   },
   {
     "id": 2,
-    "title": "Setup authentication",
-    "description": "Implement login and register",
-    "column": "in-progress",
-    "createdAt": "2025-01-02T09:30:00.000Z"
+    "title": "Setup project repository",
+    "description": "Initialize Next.js project and configure ESLint",
+    "column": "done",
+    "createdAt": "2025-01-02T08:00:00.000Z"
   },
   {
     "id": 3,
-    "title": "Add drag and drop",
-    "description": "Integrate dnd-kit",
-    "column": "review",
-    "createdAt": "2025-01-03T14:15:00.000Z"
+    "title": "Implement authentication flow",
+    "description": "Add login and register forms with validation",
+    "column": "in-progress",
+    "createdAt": "2025-01-03T08:00:00.000Z"
   },
   {
     "id": 4,
-    "title": "Deploy to Vercel",
-    "description": "Prepare production build",
+    "title": "Create API service layer",
+    "description": "Abstract fetch logic into reusable functions",
+    "column": "review",
+    "createdAt": "2025-01-04T08:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "Build Kanban board layout",
+    "description": "Add four responsive columns using Bootstrap grid",
+    "column": "in-progress",
+    "createdAt": "2025-01-05T08:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "title": "Create task card component",
+    "description": "Display title, description and actions",
+    "column": "review",
+    "createdAt": "2025-01-06T08:00:00.000Z"
+  },
+  {
+    "id": 7,
+    "title": "Integrate React Query",
+    "description": "Wrap app with QueryClientProvider",
     "column": "done",
-    "createdAt": "2025-01-04T16:45:00.000Z"
+    "createdAt": "2025-01-07T08:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "title": "Add drag and drop support",
+    "description": "Use dnd-kit to move tasks between columns",
+    "column": "backlog",
+    "createdAt": "2025-01-08T08:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "title": "Create task creation modal",
+    "description": "Use Bootstrap modal with react-hook-form",
+    "column": "backlog",
+    "createdAt": "2025-01-09T08:00:00.000Z"
+  },
+  {
+    "id": 10,
+    "title": "Add delete confirmation dialog",
+    "description": "Prevent accidental deletion of tasks",
+    "column": "in-progress",
+    "createdAt": "2025-01-10T08:00:00.000Z"
+  },
+  {
+    "id": 11,
+    "title": "Implement search feature",
+    "description": "Filter tasks by title and description",
+    "column": "backlog",
+    "createdAt": "2025-01-11T08:00:00.000Z"
+  },
+  {
+    "id": 12,
+    "title": "Add pagination per column",
+    "description": "Use page query param to limit results",
+    "column": "backlog",
+    "createdAt": "2025-01-12T08:00:00.000Z"
+  },
+  {
+    "id": 13,
+    "title": "Improve loading states",
+    "description": "Show spinner while fetching tasks",
+    "column": "review",
+    "createdAt": "2025-01-13T08:00:00.000Z"
+  },
+  {
+    "id": 14,
+    "title": "Handle API errors",
+    "description": "Display toast notification on failure",
+    "column": "in-progress",
+    "createdAt": "2025-01-14T08:00:00.000Z"
+  },
+  {
+    "id": 15,
+    "title": "Refactor board layout",
+    "description": "Extract reusable column component",
+    "column": "done",
+    "createdAt": "2025-01-15T08:00:00.000Z"
+  },
+  {
+    "id": 16,
+    "title": "Sort tasks by creation date",
+    "description": "Order newest tasks first",
+    "column": "backlog",
+    "createdAt": "2025-01-16T08:00:00.000Z"
+  },
+  {
+    "id": 17,
+    "title": "Optimize React Query caching",
+    "description": "Adjust staleTime and cacheTime",
+    "column": "review",
+    "createdAt": "2025-01-17T08:00:00.000Z"
+  },
+  {
+    "id": 18,
+    "title": "Add edit task functionality",
+    "description": "Reuse form component for editing",
+    "column": "in-progress",
+    "createdAt": "2025-01-18T08:00:00.000Z"
+  },
+  {
+    "id": 19,
+    "title": "Improve responsive layout",
+    "description": "Ensure columns stack properly on mobile",
+    "column": "done",
+    "createdAt": "2025-01-19T08:00:00.000Z"
+  },
+  {
+    "id": 20,
+    "title": "Add empty state UI",
+    "description": "Display message when column has no tasks",
+    "column": "review",
+    "createdAt": "2025-01-20T08:00:00.000Z"
+  },
+  {
+    "title": "test",
+    "description": "test",
+    "column": "backlog",
+    "id": "e957a7c3-66d2-47ef-9c67-72c1d5a942c6",
+    "createdAt": "2026-02-25T23:08:59.669Z"
   }
 ]

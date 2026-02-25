@@ -2,9 +2,25 @@
 
 import Link from "next/link";
 import { LayoutGrid } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 import SearchBar from "../atom/SearchBar";
 
 const Navbar = () => {
+  const { data } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: async () => {
+      const resp = await fetch("/api/tasks/gettasks", { cache: "no-store" });
+      if (!resp.ok) return { tasks: [] };
+      return resp.json();
+    },
+  });
+
+  const tasksCount = Array.isArray((data as { tasks?: unknown[] })?.tasks)
+    ? (data as { tasks: unknown[] }).tasks.length
+    : Array.isArray(data)
+      ? data.length
+      : 0;
+
   return (
     <nav className="navbar bg-body-tertiary border-bottom">
       <div className="container d-flex flex-column py-2">
@@ -25,7 +41,7 @@ const Navbar = () => {
                 Kanban Board
               </span>
               <span className="text-body-secondary fs-6">
-                {/* {tasks.length} tasks */}tasks
+                {tasksCount} tasks
               </span>
             </span>
           </Link>

@@ -5,15 +5,12 @@ import { taskSchema, type Task } from "@/lib/zodSchemas";
 
 type StoredTask = Task & { id: string | number; createdAt?: string };
 
-const normalizeColumn = (value: string) => {
-  if (value === "in_progress") return "in-progress";
-  return value;
-};
-
 export async function PATCH(req: Request) {
   const filePath = path.join(process.cwd(), "lib", "mockData.json");
+
   const body = await req.json();
   const id = body?.id;
+  console.log(body);
 
   if (!id) {
     return NextResponse.json(
@@ -25,7 +22,7 @@ export async function PATCH(req: Request) {
   const payload = {
     title: body?.title,
     description: body?.description,
-    column: normalizeColumn(body?.column),
+    column: body?.column,
   };
 
   const validateFields = taskSchema.safeParse(payload);
@@ -36,22 +33,16 @@ export async function PATCH(req: Request) {
     );
   }
 
-  let existing: unknown = [];
+  let existing: StoredTask[] | [] = [];
   try {
     const raw = await fs.readFile(filePath, "utf-8");
-    existing = raw.trim() ? JSON.parse(raw) : { tasks: [] };
+    existing = raw.trim() ? JSON.parse(raw) : [];
   } catch (error) {
     console.log(error);
     throw new Error("Issue with reading file...");
   }
 
-  const tasks = Array.isArray(existing)
-    ? existing
-    : (existing as { tasks?: StoredTask[] })?.tasks ?? [];
-
-  const index = tasks.findIndex(
-    (task) => String(task.id) === String(id),
-  );
+  const index = existing.findIndex((task) => String(task.id) === String(id));
 
   if (index === -1) {
     return NextResponse.json(
@@ -61,24 +52,20 @@ export async function PATCH(req: Request) {
   }
 
   const updated: StoredTask = {
-    ...tasks[index],
+    ...existing[index],
     ...validateFields.data,
-    column: normalizeColumn(validateFields.data.column),
+    column: validateFields.data.column,
   };
 
-  const next = [...tasks];
+  const next = [...existing];
   next[index] = updated;
 
   try {
-    await fs.writeFile(
-      filePath,
-      JSON.stringify({ tasks: next }, null, 2),
-      "utf-8",
-    );
+    await fs.writeFile(filePath, JSON.stringify(next, null, 2), "utf-8");
   } catch (error) {
     console.log(error);
     throw new Error("Issue with writing file...");
   }
 
-  return NextResponse.json({ ok: true, status: 200 }, { status: 200 });
+  return NextResponse.json({ ok: true, status: 201 }, { status: 201 });
 }
