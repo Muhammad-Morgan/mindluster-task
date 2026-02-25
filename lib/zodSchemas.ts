@@ -5,7 +5,7 @@ export type Column = "backlog" | "in-progress" | "review" | "done";
 export type Task = {
   title: string;
   description: string;
-  column: Column;
+  column?: Column;
 };
 
 export const taskSchema = z.object({
