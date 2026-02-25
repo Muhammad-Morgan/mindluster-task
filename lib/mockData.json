@@ -1,49 +1,38 @@
-[
-  {
-    "id": 1,
-    "title": "Design homepage",
-    "description": "Include hero section",
-    "column": "backlog",
-    "createdAt": "2025-01-01T10:00:00.000Z"
-  },
-  {
-    "id": 2,
-    "title": "Setup authentication",
-    "description": "Implement login and register",
-    "column": "in_progress",
-    "createdAt": "2025-01-02T09:30:00.000Z"
-  },
-  {
-    "id": 3,
-    "title": "Add drag and drop",
-    "description": "Integrate dnd-kit",
-    "column": "review",
-    "createdAt": "2025-01-03T14:15:00.000Z"
-  },
-  {
-    "id": 4,
-    "title": "Deploy to Vercel",
-    "description": "Prepare production build",
-    "column": "done",
-    "createdAt": "2025-01-04T16:45:00.000Z"
-  },
-  {
-    "title": "test",
-    "description": "test desc",
-    "column": "backlog",
-    "id": "9c3d3e93-7156-4988-baa7-4c3a9002e5d1"
-  },
-  {
-    "title": "test 2",
-    "description": "test 2 desc",
-    "column": "in-progress",
-    "id": "a8c42662-e6eb-44ab-8696-8336ace9f5e9"
-  },
-  {
-    "title": "test 3",
-    "description": " test 3 desc",
-    "column": "review",
-    "id": "4b31555e-be86-40b2-9c80-c736b9f86c6a",
-    "createdAt": "2026-02-25T20:41:17.328Z"
-  }
-]
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Design homepage",
+      "description": "Include hero section",
+      "column": "backlog",
+      "createdAt": "2025-01-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Setup authentication",
+      "description": "Implement login and register",
+      "column": "in_progress",
+      "createdAt": "2025-01-02T09:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Add drag and drop",
+      "description": "Integrate dnd-kit",
+      "column": "review",
+      "createdAt": "2025-01-03T14:15:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Deploy to Vercel",
+      "description": "Prepare production build",
+      "column": "done",
+      "createdAt": "2025-01-04T16:45:00.000Z"
+    },
+    {
+      "title": "test 2",
+      "description": "test 2 desc",
+      "column": "in-progress",
+      "id": "a8c42662-e6eb-44ab-8696-8336ace9f5e9"
+    }
+  ]
+}

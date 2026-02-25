@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Task } from "@/utils/zodSchema";
+import type { Task } from "@/lib/zodSchemas";
 import DeleteButton from "@/components/atom/DeleteButton";
 
 const TaskCard = ({ task }: { task: Task }) => {
@@ -8,9 +8,7 @@ const TaskCard = ({ task }: { task: Task }) => {
       <div className="d-flex align-items-start justify-content-between gap-2">
         <div className="pe-2">
           <h6 className="mb-1">{task.title}</h6>
-          <p className="mb-2 small text-body-secondary">
-            {task.description}
-          </p>
+          <p className="mb-2 small text-body-secondary">{task.description}</p>
         </div>
         <Link
           className="small text-decoration-none link-primary"
