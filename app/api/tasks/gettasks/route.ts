@@ -23,8 +23,8 @@ export async function GET(req: NextRequest) {
     if (q) {
       existing = existing.filter((task) => {
         if (
-          task.title.toLowerCase().includes(q) ||
-          task.description.toLowerCase().includes(q)
+          task.title.toLowerCase().includes(q.toLowerCase()) ||
+          task.description.toLowerCase().includes(q.toLowerCase())
         ) {
           return task;
         }
