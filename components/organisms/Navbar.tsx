@@ -10,7 +10,7 @@ const Navbar = () => {
   const { data } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const resp = await fetch("/api/tasks/gettasks", { cache: "no-store" });
+      const resp = await fetch("/api/tasks/gettasks");
       if (!resp.ok) return { tasks: [] };
       return resp.json();
     },
