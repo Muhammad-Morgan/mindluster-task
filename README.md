@@ -102,7 +102,7 @@ If you want I can add it later. However, for now I will just share the live link
 - GET request is working.
 - Mutations aren't I am afraid.
 
-I deployed, and just made sure everything is working:
+I deployed, and just made sure everything is working in Dev as I said earlier... Just to be sure:
 
 - CreateTask.
 - EditTask.
