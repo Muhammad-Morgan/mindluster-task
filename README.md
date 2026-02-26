@@ -98,3 +98,14 @@ Hey, I just found out that in deployment the mockData.json won't work.
 If I had time I would easily replace with MongoDB + Mongoose or Postregs + Prisma.
 
 If you want I can add it later. However, for now I will just share the live link as it is even if not working CRUD actions. And you can try on your loacal machine and you will find it's working 100%...
+
+- GET request is working.
+- Mutations aren't I am afraid.
+
+I deployed, and just made sure everything is working:
+
+- CreateTask.
+- EditTask.
+- DeleteTask.
+- GetTask.
+- GetTasks.

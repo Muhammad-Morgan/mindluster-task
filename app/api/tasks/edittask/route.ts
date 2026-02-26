@@ -10,7 +10,6 @@ export async function PATCH(req: Request) {
 
   const body = await req.json();
   const id = body?.id;
-  console.log(body);
 
   if (!id) {
     return NextResponse.json(

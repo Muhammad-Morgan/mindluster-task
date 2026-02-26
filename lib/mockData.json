@@ -16,8 +16,8 @@
   {
     "id": 3,
     "title": "Implement authentication flow",
-    "description": "Add login and register forms with validation",
-    "column": "in-progress",
+    "description": "Add login and register forms with validation.......",
+    "column": "review",
     "createdAt": "2025-01-03T08:00:00.000Z"
   },
   {
@@ -108,7 +108,7 @@
     "id": 16,
     "title": "Sort tasks by creation date",
     "description": "Order newest tasks first",
-    "column": "backlog",
+    "column": "done",
     "createdAt": "2025-01-16T08:00:00.000Z"
   },
   {
@@ -138,12 +138,5 @@
     "description": "Display message when column has no tasks",
     "column": "review",
     "createdAt": "2025-01-20T08:00:00.000Z"
-  },
-  {
-    "title": "test",
-    "description": "test",
-    "column": "backlog",
-    "id": "e957a7c3-66d2-47ef-9c67-72c1d5a942c6",
-    "createdAt": "2026-02-25T23:08:59.669Z"
   }
 ]
