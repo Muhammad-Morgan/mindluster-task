@@ -6,9 +6,11 @@ const TaskCard = ({ task }: { task: Task }) => {
   return (
     <div className="bg-white border rounded-3 p-3 shadow-sm">
       <div className="d-flex align-items-start justify-content-between gap-2">
-        <div className="pe-2">
-          <h6 className="mb-1">{task.title}</h6>
-          <p className="mb-2 small text-body-secondary">{task.description}</p>
+        <div className="pe-2 text-break">
+          <h6 className="mb-1 text-break">{task.title}</h6>
+          <p className="mb-2 small text-body-secondary text-break">
+            {task.description}
+          </p>
         </div>
         <Link
           className="small text-decoration-none link-primary"
